@@ -1,0 +1,27 @@
+.companyMsg-btn {
+    margin-bottom: 16px;
+}
+.companyMsg-block {
+    margin-bottom: 16px;
+    .companyMsg-block__text {
+        margin-bottom: 4px;
+    }
+}
+.companyMsg-time {
+    display: flex;
+    justify-content: space-between;
+    .companyMsg-time__block {
+        width: 40%;
+    }
+}
+
+.companyMsg-content {
+    height: 478px;
+    overflow-y: auto;
+}
+
+.arco-icon-delete {
+    &:hover {
+        color: #165dff;
+    }
+}

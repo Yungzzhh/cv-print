@@ -1,0 +1,54 @@
+.preview-inner {
+    background-color: #fff;
+    transform: scale(0.7);
+    transform-origin: top left;
+    width: 1024px;
+    height: max-content;
+    padding: 2rem;
+    .preview-section {
+        .personal {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            .personal-name {
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+            }
+            .personal-info {
+                display: flex;
+                flex-direction: row;
+                gap: 12px;
+                .personal-info__title {
+                    font-weight:500;
+                }
+            }
+        }
+    }
+}
+
+.header {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    color: rgb(37, 99, 235);
+    background: rgb(219 234 254);
+    padding: 4px 12px;
+    margin: 16px 0;
+    font-size: 20px;
+    border-left: 4px solid rgb(37, 99, 235);
+    .header-icon {
+        margin-right: 8px;
+        &:hover {
+            fill: red;
+        }
+    }
+    .header-name {
+        font-weight: 600;
+    }
+}
+
+.arco-tabs {
+    width: 100%;
+}
