@@ -2,9 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import infoReducer from './infoReducer.ts';
 import skillsReducer from './skillsReducer.ts';
 import companyReducer from './companyReducer.ts';
-import projectReducer from './listOperateReducer.ts';
+import projectReducer from './projectReducer.ts';
 import eduReducer from './eduReducer.ts';
-
 
 const store = configureStore({
   reducer: {

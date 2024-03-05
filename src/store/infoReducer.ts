@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const personalInfo = createSlice({
   name: 'personalInfo',
   initialState: {
-    infoList: [
+    list: [
       {
         key: 'name',
         infoOption: '姓名',
@@ -22,17 +22,20 @@ export const personalInfo = createSlice({
   },
   reducers: {
     updateValue: (state, {payload}) => {
-      const updatedList = state.infoList.map(info => {
+      const updatedList = state.list.map(info => {
         if(info.key === payload.key) {
           info.context = payload.value
         }
         return info
       })
-      state.infoList = updatedList
+      state.list = updatedList
     },
+    initialization: (state, {payload}) => {
+      state.list = payload.list
+    }
   },
 });
 
-export const { updateValue } = personalInfo.actions;
+export const { updateValue, initialization } = personalInfo.actions;
 
 export default personalInfo.reducer;

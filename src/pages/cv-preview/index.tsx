@@ -5,7 +5,8 @@ import './index.scss'
 import { PersonalInfoList } from '@/model/personalInfo';
 
 export const CvPreview = forwardRef((props, ref: any) => {
-    const { infoList } = useSelector((state: any) => state.personalInfo)
+    const { list: infoList } = useSelector((state: any) => state.personalInfo)
+    
     const infoMap: any = {};
     infoList.forEach((info: PersonalInfoList) => {
         infoMap[info.key] = info;

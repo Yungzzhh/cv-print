@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { Model_Project } from '@/model';
 import '../Company/index.scss'
 import CustomEditor from '@/components/editor';
-import { addProject, removeProject, updateProjectList } from '@/store/listOperateReducer';
+import { addProject, removeProject, updateProjectList } from '@/store/projectReducer';
 import { isAfterDate } from '@/utils';
 
 const CollapseItem = Collapse.Item;
@@ -70,7 +70,7 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
                     <div>开始时间：</div>
                     <DatePicker
                         value={msg.startTime}
-                        onChange={(val, _e) => changeProjectMsg(val, 'startTime')}
+                        onChange={(val, _e) => changeProjectMsg(isAfterDate(val), 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>

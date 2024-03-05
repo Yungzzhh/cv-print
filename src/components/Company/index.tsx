@@ -11,7 +11,7 @@ import { isAfterDate } from '@/utils';
 const CollapseItem = Collapse.Item;
 
 const Company = () => {
-    const { companyList } = useSelector((state: any) => state.company)
+    const { list } = useSelector((state: any) => state.company)
     const dispatch = useDispatch()
 
     return (
@@ -19,9 +19,9 @@ const Company = () => {
             <div className='companyMsg-btn'>
                 <Button type='primary' onClick={() => dispatch(addCompany())}>添加工作经历</Button>
             </div>
-            {companyList.length > 0 ? (
+            {list.length > 0 ? (
                 <Collapse>
-                    {companyList.map((company: Model_Company.CompanyList) => (
+                    {list.map((company: Model_Company.CompanyList) => (
                         <CollapseItem
                             key={company.order}
                             header={company.companyName ? company.companyName : '请输入公司名称'}
@@ -77,7 +77,7 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
                     <div>开始时间：</div>
                     <DatePicker
                         value={companyMsg.startTime}
-                        onChange={(val, _e) => changeCompanyMsg(val, 'startTime')}
+                        onChange={(val, _e) => changeCompanyMsg(isAfterDate(val), 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>

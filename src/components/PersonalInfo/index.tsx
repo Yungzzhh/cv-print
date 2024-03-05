@@ -4,7 +4,7 @@ import { Input } from "@arco-design/web-react";
 import { useDispatch, useSelector } from "react-redux";
 
 const PersonalInfo = () => {
-    const {infoList} = useSelector((state: any) => state.personalInfo)
+    const {list} = useSelector((state: any) => state.personalInfo)
     const dispatch = useDispatch();
 
     const changeNameInput = (value: string, key: Model_PersonalInfo.PersonInfoKey) => {
@@ -16,7 +16,7 @@ const PersonalInfo = () => {
 
     return (
         <>
-            {infoList.map((section: Model_PersonalInfo.PersonalInfoList) => (
+            {list.map((section: Model_PersonalInfo.PersonalInfoList) => (
                 <div key={section.key} style={{marginBottom: '16px'}}>
                     <div style={{marginBottom: '4px'}}>{section.infoOption}: </div>
                     <Input 

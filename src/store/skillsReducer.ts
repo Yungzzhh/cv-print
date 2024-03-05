@@ -10,9 +10,12 @@ export const personalInfo = createSlice({
     updateSkillValue: (state, {payload}) => {
       state.content = payload
     },
+    initialization: (state, {payload}) => {
+      state.content = payload.content
+    }
   },
 });
 
-export const { updateSkillValue } = personalInfo.actions;
+export const { updateSkillValue, initialization } = personalInfo.actions;
 
 export default personalInfo.reducer;

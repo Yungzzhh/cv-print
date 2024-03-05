@@ -71,7 +71,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
                 <Input
                     onChange={(val, _e) => changeEduMsg(val, 'major')}
                     allowClear
-                    value={msg.school}
+                    value={msg.major}
                     placeholder='Please enter the major'
                 />
             </div>
@@ -80,7 +80,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
                 <Input
                     onChange={(val, _e) => changeEduMsg(val, 'degree')}
                     allowClear
-                    value={msg.school}
+                    value={msg.degree}
                     placeholder='Please enter degree'
                 />
             </div>
@@ -89,7 +89,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
                     <div>开始时间：</div>
                     <DatePicker
                         value={msg.startTime}
-                        onChange={(val, _e) => changeEduMsg(val, 'startTime')}
+                        onChange={(val, _e) => changeEduMsg(isAfterDate(val), 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>

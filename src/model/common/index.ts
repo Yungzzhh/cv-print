@@ -4,3 +4,5 @@ export class ListOrder {
         this.order = order
     }
 }
+
+export type StoreModuleKey = 'personalInfo' | 'skills' | 'company' | 'project' | 'edu'
