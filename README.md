@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -52,3 +53,8 @@ export default {
   工作经历
     - 公司名、负责内容、时间、是否实习
   项目经验、学历
+||||||| empty tree
+=======
+# cv-print
+Print your cv to pdf
+>>>>>>> b48660461d694b9e474b08ef5141ace4d18d69ab
