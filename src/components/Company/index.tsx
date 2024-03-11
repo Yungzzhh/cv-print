@@ -69,6 +69,7 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
                 <Input
                     onChange={(val, _e) => changeCompanyMsg(val, 'department')}
                     allowClear
+                    value={companyMsg.department}
                     placeholder='Please enter company name'
                 />
             </div>

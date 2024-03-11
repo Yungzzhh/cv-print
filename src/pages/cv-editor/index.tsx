@@ -3,7 +3,7 @@ import ReactToPrint from 'react-to-print';
 import './index.scss'
 
 import SectionTabs from '@/components/Tabs';
-import { Button, Input } from '@arco-design/web-react';
+import { Button, Input, Message } from '@arco-design/web-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initialization as infoInit } from '@/store/infoReducer';
 import { initialization as skillsInit } from '@/store/skillsReducer';
@@ -18,7 +18,7 @@ interface CvEditorProps {
 export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) => {
     const [exportName, setExportName] = useState('')
 
-    const localData = JSON.parse(localStorage.getItem('cv') || '')
+    const localData = JSON.parse(localStorage.getItem('cv') || '{}')
 
     const dispatch = useDispatch();
 
@@ -30,6 +30,13 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
         dispatch(eduInit(localData['edu']))
     }, [localData])
 
+    const onBeforePrint = () => {
+        // const printDom = document.getElementById('pdfViewId')!
+        // printDom.style.transform = 'null'
+        // // printDom.style.transform = 'null'
+        // console.log(printDom.style);
+        
+    }
 
     return (
         <div className='editor-container'>
@@ -45,6 +52,7 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
                         <ReactToPrint
                             trigger={() => (<Button type='primary'>export</Button>)}
                             documentTitle={exportName}
+                            onBeforeGetContent={() => onBeforePrint()}
                             content={() => ref.current}
                         />
                     </div>
@@ -61,6 +69,7 @@ const SaveCv = () => {
     const store = useSelector((state: any) => state)
     const saveCvMsg = () => {
         localStorage.setItem('cv', JSON.stringify(store))
+        Message.success('save message successful!');
     }
     return (
         <Button type='primary' onClick={saveCvMsg}>save</Button>

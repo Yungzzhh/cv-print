@@ -11,7 +11,7 @@ export const personalInfo = createSlice({
       state.content = payload
     },
     initialization: (state, {payload}) => {
-      state.content = payload.content
+      state.content = payload ? payload.content : ''
     }
   },
 });

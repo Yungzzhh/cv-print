@@ -8,15 +8,15 @@ export const personalInfo = createSlice({
       {
         key: 'name',
         infoOption: '姓名',
-        context: '容志和',
+        context: '',
       }, {
         key: 'phone',
         infoOption: '电话',
-        context: '18022989193',
+        context: '',
       }, {
         key: 'email',
         infoOption: '邮箱',
-        context: '782494187@qq.com',
+        context: '',
       }
     ]
   },
@@ -31,7 +31,22 @@ export const personalInfo = createSlice({
       state.list = updatedList
     },
     initialization: (state, {payload}) => {
-      state.list = payload.list
+     
+      state.list =  payload ? payload.list : [
+        {
+          key: 'name',
+          infoOption: '姓名',
+          context: '',
+        }, {
+          key: 'phone',
+          infoOption: '电话',
+          context: '',
+        }, {
+          key: 'email',
+          infoOption: '邮箱',
+          context: '',
+        }
+      ]
     }
   },
 });

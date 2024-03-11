@@ -28,6 +28,17 @@
     }
 }
 
+@media print {
+    .preview-inner {
+        transform: none !important; /* 取消缩放 */
+    }
+}
+
+/* 检查是否无意中设置了文本方向为从右到左 */
+[dir="rtl"] {
+    direction: ltr !important; /* 尝试改为从左到右 */
+  }
+
 .header {
     height: 36px;
     display: flex;
@@ -46,6 +57,41 @@
     }
     .header-name {
         font-weight: 600;
+    }
+}
+
+.preview-company {
+    .preview-company__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left-part {
+            font-size: 16px;
+            font-weight: 500;
+            .left-part__name {
+                // font-size: 16px;
+                // font-weight: 500;
+            }
+            .left-name__department {
+
+            }
+        }
+    }
+    .preview-company__content {
+
+    }
+}
+
+.rich-text {
+    p {
+        margin: 4px 0;
+    }
+    h1,h2,h3,h4 {
+        margin: 20px 0;
+    }
+    ul {
+        margin: 4px 0;
+        padding-left: 18px;
     }
 }
 

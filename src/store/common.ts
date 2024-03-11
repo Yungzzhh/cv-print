@@ -37,7 +37,7 @@ export function createListOperateReducer<T extends CustomClass>(name: string, In
         state.list = state.list.filter((item: any) => item.order !== payload.order)
       },
       initialization: (state, {payload}) => {
-        state.list = payload.list
+        state.list = payload ? payload.list : []
       }
     },
   });

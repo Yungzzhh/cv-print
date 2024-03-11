@@ -1,5 +1,6 @@
 import { Tabs } from '@arco-design/web-react';
 import { FC, Suspense, lazy, useState } from 'react';
+import './index.scss'
 
 type Section = keyof typeof sectionComponentMap;
 

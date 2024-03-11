@@ -11,8 +11,8 @@ import { isAfterDate } from '@/utils';
 const CollapseItem = Collapse.Item;
 
 const Project = () => {
-    const {list} = useSelector((state: any) => state.project)
-    
+    const { list } = useSelector((state: any) => state.project)
+
     const dispatch = useDispatch()
 
     return (
@@ -69,6 +69,7 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
                 <div className='companyMsg-time__block'>
                     <div>开始时间：</div>
                     <DatePicker
+                        onClear={() => changeProjectMsg('', 'startTime')}
                         value={msg.startTime}
                         onChange={(val, _e) => changeProjectMsg(isAfterDate(val), 'startTime')}
                     />
@@ -76,6 +77,7 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
                     <DatePicker
+                        onClear={() => changeProjectMsg('', 'endTime')}
                         value={msg.endTime}
                         onChange={(val, _e) => {
                             changeProjectMsg(isAfterDate(val), 'endTime')
@@ -84,7 +86,7 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
                 </div>
             </div>
             <div className='companyMsg-block'>
-                <div className='companyMsg-block__text'>负责内容：</div>
+                <div className='companyMsg-block__text'>项目描述：</div>
                 <div className='companyMsg-content'>
                     <CustomEditor content={msg.content} onChange={(val) => changeProjectMsg(val, 'content')} />
                 </div>
@@ -102,7 +104,7 @@ const OperateCompanyList: FC<CollapseItemProps> = ({ msg }) => {
             title='Confirm'
             content='Are you sure you want to delete?'
             onOk={() => {
-                dispatch(removeProject({order: msg.order}))
+                dispatch(removeProject({ order: msg.order }))
                 Message.info({
                     content: 'ok',
                 });
