@@ -5,7 +5,7 @@ import './index.scss'
 import { PersonalInfoList } from '@/model/personalInfo';
 import { Model_Company, Model_Edu, Model_Project } from '@/model';
 
-export const CvPreview = forwardRef((props, ref: any) => {
+export const CvPreview = forwardRef((_props, ref: any) => {
     const { list: infoList } = useSelector((state: any) => state.personalInfo)
 
     const infoMap: any = {};
