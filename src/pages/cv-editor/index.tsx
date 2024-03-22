@@ -30,14 +30,6 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
         dispatch(eduInit(localData['edu']))
     }, [localData])
 
-    const onBeforePrint = () => {
-        // const printDom = document.getElementById('pdfViewId')!
-        // printDom.style.transform = 'null'
-        // // printDom.style.transform = 'null'
-        // console.log(printDom.style);
-        
-    }
-
     return (
         <div className='editor-container'>
             <div className="editor-header">
@@ -52,7 +44,6 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
                         <ReactToPrint
                             trigger={() => (<Button type='primary'>export</Button>)}
                             documentTitle={exportName}
-                            onBeforeGetContent={() => onBeforePrint()}
                             content={() => ref.current}
                         />
                     </div>

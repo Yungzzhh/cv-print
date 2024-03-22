@@ -25,8 +25,8 @@ export const CvPreview = forwardRef((_props, ref: any) => {
                 <div className='personal'>
                     <div className='personal-name'>{name.context}</div>
                     <div className='personal-info'>
-                        <div><span className='personal-info__title'>电话</span>:{phone.context}</div>
-                        <div><span className='personal-info__title'>邮箱</span>:{email.context}</div>
+                        {phone.context && <div><span className='personal-info__title'>电话</span>:{phone.context}</div>}
+                        {email.context && <div><span className='personal-info__title'>邮箱</span>:{email.context}</div>}
                     </div>
                 </div>
                 <div className='skills'>
@@ -90,7 +90,6 @@ function NameWithTime({ name, subName, startTime, endTime }: NameWithTimeProps) 
 
 function CompanyPart() {
     const { list: companyList } = useSelector((state: any) => state.company)
-    console.log(companyList);
     
     return (
         <>

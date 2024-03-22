@@ -76,14 +76,14 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
             <div className='companyMsg-block companyMsg-time'>
                 <div className='companyMsg-time__block'>
                     <div>开始时间：</div>
-                    <DatePicker
+                    <DatePicker.MonthPicker
                         value={companyMsg.startTime}
                         onChange={(val, _e) => changeCompanyMsg(isAfterDate(val), 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
-                    <DatePicker
+                    <DatePicker.MonthPicker
                         value={companyMsg.endTime}
                         onChange={(val, _e) => {
                             changeCompanyMsg(isAfterDate(val), 'endTime')

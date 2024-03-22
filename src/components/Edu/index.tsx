@@ -87,14 +87,14 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
             <div className='companyMsg-block companyMsg-time'>
                 <div className='companyMsg-time__block'>
                     <div>开始时间：</div>
-                    <DatePicker
+                    <DatePicker.MonthPicker
                         value={msg.startTime}
                         onChange={(val, _e) => changeEduMsg(isAfterDate(val), 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
-                    <DatePicker
+                    <DatePicker.MonthPicker
                         value={msg.endTime}
                         onChange={(val, _e) => {
                             changeEduMsg(isAfterDate(val), 'endTime')
