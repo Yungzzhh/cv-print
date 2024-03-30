@@ -1,11 +1,11 @@
 import { Model_Edu } from "@/model"
 import { addEdu, removeEdu, updateEduList } from "@/store/eduReducer"
-import { isAfterDate } from "@/utils";
 import { Button, Collapse, DatePicker, Input, Message, Popconfirm } from "@arco-design/web-react"
 import { IconDelete } from "@arco-design/web-react/icon";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import '../Company/index.scss'
+import { MonthPicker } from "../MonthPicker";
 
 
 const CollapseItem = Collapse.Item;
@@ -89,16 +89,16 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
                     <div>开始时间：</div>
                     <DatePicker.MonthPicker
                         value={msg.startTime}
-                        onChange={(val, _e) => changeEduMsg(isAfterDate(val), 'startTime')}
+                        onChange={(val, _e) => changeEduMsg(val, 'startTime')}
                     />
                 </div>
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
-                    <DatePicker.MonthPicker
-                        value={msg.endTime}
-                        onChange={(val, _e) => {
-                            changeEduMsg(isAfterDate(val), 'endTime')
-                        }}
+                    <MonthPicker
+                        time={msg.endTime}
+                        changeTime={(val: any) => {
+                            changeEduMsg(val, 'endTime')
+                        }} 
                     />
                 </div>
             </div>
@@ -115,7 +115,7 @@ const OperateEduList: FC<CollapseItemProps> = ({ msg }) => {
             title='Confirm'
             content='Are you sure you want to delete?'
             onOk={() => {
-                dispatch(removeEdu({order: msg.order}))
+                dispatch(removeEdu({ order: msg.order }))
                 Message.info({
                     content: 'ok',
                 });

@@ -7,6 +7,7 @@ import { Model_Company } from '@/model';
 import './index.scss'
 import CustomEditor from '@/components/editor';
 import { isAfterDate } from '@/utils';
+import { MonthPicker } from '@/components/MonthPicker';
 
 const CollapseItem = Collapse.Item;
 
@@ -83,11 +84,17 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
                 </div>
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
-                    <DatePicker.MonthPicker
+                    {/* <DatePicker.MonthPicker
                         value={companyMsg.endTime}
                         onChange={(val, _e) => {
                             changeCompanyMsg(isAfterDate(val), 'endTime')
                         }}
+                    /> */}
+                    <MonthPicker
+                        time={companyMsg.endTime}
+                        changeTime={(val: any) => {
+                            changeCompanyMsg(val, 'endTime')
+                        }} 
                     />
                 </div>
             </div>

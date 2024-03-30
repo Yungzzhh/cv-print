@@ -54,7 +54,6 @@ export const CvPreview = forwardRef((_props, ref: any) => {
 
 interface SectionHeaderProp {
     name: string;
-    // icon?: JSX.Element;
 }
 function SectionHeader(prop: SectionHeaderProp) {
     return (

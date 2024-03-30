@@ -7,6 +7,7 @@ import '../Company/index.scss'
 import CustomEditor from '@/components/editor';
 import { addProject, removeProject, updateProjectList } from '@/store/projectReducer';
 import { isAfterDate } from '@/utils';
+import { MonthPicker } from '@/components/MonthPicker';
 
 const CollapseItem = Collapse.Item;
 
@@ -76,12 +77,11 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
                 </div>
                 <div className='companyMsg-time__block'>
                     <div>结束时间：</div>
-                    <DatePicker.MonthPicker
-                        onClear={() => changeProjectMsg('', 'endTime')}
-                        value={msg.endTime}
-                        onChange={(val, _e) => {
-                            changeProjectMsg(isAfterDate(val), 'endTime')
-                        }}
+                    <MonthPicker
+                        time={msg.endTime}
+                        changeTime={(val: any) => {
+                            changeProjectMsg(val, 'endTime')
+                        }} 
                     />
                 </div>
             </div>
