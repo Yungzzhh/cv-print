@@ -29,12 +29,18 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  dnd-core:
+    specifier: ^16.0.1
+    version: 16.0.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
   react-dnd:
     specifier: ^16.0.1
     version: 16.0.1(@types/node@20.11.24)(@types/react@18.2.60)(react@18.2.0)
+  react-dnd-html5-backend:
+    specifier: ^16.0.1
+    version: 16.0.1
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2575,6 +2581,12 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.0
       react: 18.2.0
+    dev: false
+
+  /react-dnd-html5-backend@16.0.1:
+    resolution: {integrity: sha512-Wu3dw5aDJmOGw8WjH1I1/yTH+vlXEL4vmjk5p+MHxP8HuHJS1lAGeIdG/hze1AvNeXWo/JgULV87LyQOr+r5jw==}
+    dependencies:
+      dnd-core: 16.0.1
     dev: false
 
   /react-dnd@16.0.1(@types/node@20.11.24)(@types/react@18.2.60)(react@18.2.0):

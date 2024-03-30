@@ -4,6 +4,7 @@ import skillsReducer from './skillsReducer.ts';
 import companyReducer from './companyReducer.ts';
 import projectReducer from './projectReducer.ts';
 import eduReducer from './eduReducer.ts';
+import tabsReducer from './tabsReducer.ts'
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     skills: skillsReducer,
     company: companyReducer,
     project: projectReducer,
-    edu: eduReducer
+    edu: eduReducer,
+    tabs: tabsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

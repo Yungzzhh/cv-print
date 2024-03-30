@@ -1,9 +1,9 @@
 
 import { useSelector } from 'react-redux';
-import { forwardRef } from "react";
+import { forwardRef, useMemo } from "react";
 import './index.scss'
 import { PersonalInfoList } from '@/model/personalInfo';
-import { Model_Company, Model_Edu, Model_Project } from '@/model';
+import { Model_Company, Model_Edu, Model_Project, Model_Tabs } from '@/model';
 
 export const CvPreview = forwardRef((_props, ref: any) => {
     const { list: infoList } = useSelector((state: any) => state.personalInfo)
@@ -17,7 +17,25 @@ export const CvPreview = forwardRef((_props, ref: any) => {
     const phone = infoMap['phone'];
     const email = infoMap['email'];
 
+    const { list } = useSelector((state: any) => state.tabs)
     const { content: skillsContent } = useSelector((state: any) => state.skills)
+
+    const map = {
+        personalInfo: <></>,
+        skills: <></>,
+        company: <CompanyPart />,
+        proj: <ProjectPart />,
+        edu: <EduPart />
+    }
+
+    const previewList: Model_Tabs.Tabs[] = useMemo(() => {
+        return list.map((item: Model_Tabs.Tabs) => {
+            return {
+                ...item,
+                comp: map[item.key]
+            }
+        }).filter((item: Model_Tabs.Tabs) => item.key !== 'personalInfo');
+    }, [list])
 
     return (
         <div ref={ref} id="pdfViewId" className="preview-inner">
@@ -29,23 +47,16 @@ export const CvPreview = forwardRef((_props, ref: any) => {
                         {email.context && <div><span className='personal-info__title'>邮箱</span>:{email.context}</div>}
                     </div>
                 </div>
-                <div className='skills'>
-                    <SectionHeader name='专业技能' />
-                    <RichTextRender content={skillsContent} />
-                </div>
-                <div className='company'>
-                    <SectionHeader name='工作经历' />
-                    <CompanyPart />
-                </div>
-                <div className='project'>
-                    <SectionHeader name='项目经历' />
-                    <ProjectPart />
-                </div>
-                <div className='edu'>
-                    <SectionHeader name='教育经历' />
-                    <EduPart />
-                </div>
-
+                {previewList.length && previewList.map(item => (
+                    <div key={item.key}>
+                        <SectionHeader name={item.sectionName} />
+                        {
+                            item.key === 'skills'
+                                ? <RichTextRender content={skillsContent} />
+                                : item.comp
+                        }
+                    </div>
+                ))}
             </div>
         </div>
     )
@@ -82,14 +93,14 @@ function NameWithTime({ name, subName, startTime, endTime }: NameWithTimeProps) 
                         : <></>
                 }
             </div>
-            {startTime && endTime && <div>{startTime.replaceAll('-','/')} - {endTime.replaceAll('-','/')}</div>}
+            {startTime && endTime && <div>{startTime.replaceAll('-', '/')} - {endTime.replaceAll('-', '/')}</div>}
         </div>
     )
 }
 
 function CompanyPart() {
     const { list: companyList } = useSelector((state: any) => state.company)
-    
+
     return (
         <>
             {companyList.map((company: Model_Company.CompanyList) => (
