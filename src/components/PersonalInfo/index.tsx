@@ -20,7 +20,7 @@ const PersonalInfo = () => {
                 <div key={section.key} style={{marginBottom: '16px'}}>
                     <div style={{marginBottom: '4px'}}>{section.infoOption}: </div>
                     <Input 
-                        onChange={(val, _e) => changeNameInput(val, section.key)}
+                        onChange={(val) => changeNameInput(val, section.key)}
                         value={section.context} 
                         allowClear  
                         placeholder='Please Enter something' 

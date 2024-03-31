@@ -1,6 +1,6 @@
 import { Model_Edu } from "@/model"
 import { addEdu, removeEdu, updateEduList } from "@/store/eduReducer"
-import { Button, Collapse, DatePicker, Input, Message, Popconfirm } from "@arco-design/web-react"
+import { Button, Collapse, Input, Message, Popconfirm } from "@arco-design/web-react"
 import { IconDelete } from "@arco-design/web-react/icon";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux"
@@ -61,7 +61,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>学校名称：</div>
                 <Input
-                    onChange={(val, _e) => changeEduMsg(val, 'school')}
+                    onChange={(val) => changeEduMsg(val, 'school')}
                     allowClear
                     value={msg.school}
                     placeholder='Please enter school name'
@@ -70,7 +70,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>专业：</div>
                 <Input
-                    onChange={(val, _e) => changeEduMsg(val, 'major')}
+                    onChange={(val) => changeEduMsg(val, 'major')}
                     allowClear
                     value={msg.major}
                     placeholder='Please enter the major'
@@ -79,7 +79,7 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>学位：</div>
                 <Input
-                    onChange={(val, _e) => changeEduMsg(val, 'degree')}
+                    onChange={(val) => changeEduMsg(val, 'degree')}
                     allowClear
                     value={msg.degree}
                     placeholder='Please enter degree'

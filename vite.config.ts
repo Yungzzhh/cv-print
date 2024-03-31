@@ -4,13 +4,24 @@ import * as path from 'path';
 
 export default defineConfig({
   plugins: [
-    react(), 
+    react(),
   ],
   resolve: {
     alias: {
-        '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './src'),
     },
-},
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+        }
+      }
+    }
+  },
   css: {
     preprocessorOptions: {
       scss: {

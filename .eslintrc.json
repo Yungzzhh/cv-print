@@ -1,0 +1,24 @@
+{
+    "extends": [
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        
+        "import/no-unused-modules": "error"
+    },
+    "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": {
+                "tsconfigRootDir": "./"
+            }
+        },
+        "import/resolver": {
+            "typescript": {}
+        }
+    }
+}

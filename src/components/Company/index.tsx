@@ -1,4 +1,5 @@
-import { Button, Collapse, DatePicker, Input, Message, Popconfirm } from '@arco-design/web-react';
+import { Button, Collapse, Input, Message, Popconfirm } from '@arco-design/web-react';
+
 import { IconDelete } from '@arco-design/web-react/icon';
 import { updateCompanyValue, addCompany, removeCompany } from '@/store/companyReducer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +7,6 @@ import { FC } from 'react';
 import { Model_Company } from '@/model';
 import './index.scss'
 import CustomEditor from '@/components/editor';
-import { isAfterDate } from '@/utils';
 import { MonthPicker } from '@/components/MonthPicker';
 import { TimeType } from '@/model/common';
 
@@ -60,7 +60,7 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>公司名称：</div>
                 <Input
-                    onChange={(val, _e) => changeCompanyMsg(val, 'companyName')}
+                    onChange={(val) => changeCompanyMsg(val, 'companyName')}
                     allowClear
                     value={companyMsg.companyName}
                     placeholder='Please enter company name'
@@ -69,7 +69,7 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>部门：</div>
                 <Input
-                    onChange={(val, _e) => changeCompanyMsg(val, 'department')}
+                    onChange={(val) => changeCompanyMsg(val, 'department')}
                     allowClear
                     value={companyMsg.department}
                     placeholder='Please enter company name'

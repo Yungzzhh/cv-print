@@ -1,4 +1,4 @@
-import { Button, Collapse, DatePicker, Input, Message, Popconfirm } from '@arco-design/web-react';
+import { Button, Collapse, Input, Message, Popconfirm } from '@arco-design/web-react';
 import { IconDelete } from '@arco-design/web-react/icon';
 import { useDispatch, useSelector } from 'react-redux';
 import { FC } from 'react';
@@ -6,9 +6,7 @@ import { Model_Project } from '@/model';
 import '../Company/index.scss'
 import CustomEditor from '@/components/editor';
 import { addProject, removeProject, updateProjectList } from '@/store/projectReducer';
-import { isAfterDate } from '@/utils';
 import { MonthPicker } from '@/components/MonthPicker';
-import dayjs from 'dayjs';
 import { TimeType } from '@/model/common';
 
 const CollapseItem = Collapse.Item;
@@ -62,7 +60,7 @@ const ProjectDetail: FC<CollapseItemProps> = ({ msg }) => {
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>项目名称：</div>
                 <Input
-                    onChange={(val, _e) => changeProjectMsg(val, 'projectName')}
+                    onChange={(val) => changeProjectMsg(val, 'projectName')}
                     allowClear
                     value={msg.projectName}
                     placeholder='Please enter project name'
