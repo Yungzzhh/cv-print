@@ -8,6 +8,7 @@ import './index.scss'
 import CustomEditor from '@/components/editor';
 import { isAfterDate } from '@/utils';
 import { MonthPicker } from '@/components/MonthPicker';
+import { TimeType } from '@/model/common';
 
 const CollapseItem = Collapse.Item;
 
@@ -74,29 +75,16 @@ const CompanyDetail: FC<CompanyDetailProps> = ({ companyMsg }) => {
                     placeholder='Please enter company name'
                 />
             </div>
-            <div className='companyMsg-block companyMsg-time'>
-                <div className='companyMsg-time__block'>
-                    <div>开始时间：</div>
-                    <DatePicker.MonthPicker
-                        value={companyMsg.startTime}
-                        onChange={(val, _e) => changeCompanyMsg(isAfterDate(val), 'startTime')}
-                    />
-                </div>
-                <div className='companyMsg-time__block'>
-                    <div>结束时间：</div>
-                    {/* <DatePicker.MonthPicker
-                        value={companyMsg.endTime}
-                        onChange={(val, _e) => {
-                            changeCompanyMsg(isAfterDate(val), 'endTime')
-                        }}
-                    /> */}
-                    <MonthPicker
-                        time={companyMsg.endTime}
-                        changeTime={(val: any) => {
-                            changeCompanyMsg(val, 'endTime')
-                        }} 
-                    />
-                </div>
+            <div className='companyMsg-block'>
+                <div className='companyMsg-block__text'>起止时间：</div>
+                <MonthPicker
+                    time={[companyMsg.startTime, companyMsg.endTime]}
+                    changeTime={(val: TimeType) => {
+                        if (!val) return;
+                        changeCompanyMsg(val[0], 'startTime')
+                        changeCompanyMsg(val[1], 'endTime')
+                    }}
+                />
             </div>
             <div className='companyMsg-block'>
                 <div className='companyMsg-block__text'>负责内容：</div>

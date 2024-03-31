@@ -6,3 +6,5 @@ export class ListOrder {
 }
 
 export type StoreModuleKey = 'personalInfo' | 'skills' | 'company' | 'project' | 'edu'
+
+export type TimeType = [string, string]

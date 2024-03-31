@@ -6,6 +6,7 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import '../Company/index.scss'
 import { MonthPicker } from "../MonthPicker";
+import { TimeType } from "@/model/common";
 
 
 const CollapseItem = Collapse.Item;
@@ -84,23 +85,16 @@ const EduDetail: FC<CollapseItemProps> = ({ msg }) => {
                     placeholder='Please enter degree'
                 />
             </div>
-            <div className='companyMsg-block companyMsg-time'>
-                <div className='companyMsg-time__block'>
-                    <div>开始时间：</div>
-                    <DatePicker.MonthPicker
-                        value={msg.startTime}
-                        onChange={(val, _e) => changeEduMsg(val, 'startTime')}
-                    />
-                </div>
-                <div className='companyMsg-time__block'>
-                    <div>结束时间：</div>
-                    <MonthPicker
-                        time={msg.endTime}
-                        changeTime={(val: any) => {
-                            changeEduMsg(val, 'endTime')
-                        }} 
-                    />
-                </div>
+            <div className='companyMsg-block'>
+                <div className='companyMsg-block__text'>起止时间：</div>
+                <MonthPicker
+                    time={[msg.startTime, msg.endTime]}
+                    changeTime={(val: TimeType) => {
+                        if (!val) return;
+                        changeEduMsg(val[0], 'startTime')
+                        changeEduMsg(val[1], 'endTime')
+                    }}
+                />
             </div>
         </>
 

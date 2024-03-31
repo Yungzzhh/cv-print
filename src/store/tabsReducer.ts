@@ -30,8 +30,6 @@ const tabsReducer = createSlice({
     reducers: {
         sortList: (state, { payload }) => {
             state.list = payload
-            console.log(state.list);
-            
         }
     },
 })
