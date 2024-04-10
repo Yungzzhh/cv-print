@@ -54,6 +54,8 @@ const SectionTabs: FC = () => {
         return sectionComponentMap[key]
     }
 
+    const { isCN } = useSelector((state: any) => state.tabs)
+
     return (
         <DndProvider backend={HTML5Backend}>
             <Tabs defaultActiveTab='personalInfo' activeTab={currentSection} onClickTab={setCurrentTab}>
@@ -62,7 +64,7 @@ const SectionTabs: FC = () => {
                         key={section.key}
                         title={
                             <WrapTabNode key={index} index={index} moveTabNode={moveTabNode}>
-                                {section.sectionName}
+                                {isCN ? section.sectionName : section.sectionNameEn}
                             </WrapTabNode>
                         }
                     >

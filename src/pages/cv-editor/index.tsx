@@ -3,13 +3,14 @@ import ReactToPrint from 'react-to-print';
 import './index.scss'
 
 import SectionTabs from '@/components/Tabs';
-import { Button, Input, Message } from '@arco-design/web-react';
+import { Button, Input, Message, Switch } from '@arco-design/web-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { initialization as infoInit } from '@/store/infoReducer';
 import { initialization as skillsInit } from '@/store/skillsReducer';
 import { initialization as companyInit } from '@/store/companyReducer';
 import { initialization as projectInit } from '@/store/projectReducer';
 import { initialization as eduInit } from '@/store/eduReducer';
+import { changeLang } from '@/store/tabsReducer';
 
 interface CvEditorProps {
     ref: any;
@@ -30,6 +31,11 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
         dispatch(eduInit(localData['edu']))
     }, [localData])
 
+    const changeLanguage = () => {
+        dispatch(changeLang(true))
+    }
+
+
     return (
         <div className='editor-container'>
             <div className="editor-header">
@@ -49,6 +55,7 @@ export const CvEditor: React.FC<CvEditorProps> = forwardRef((_props, ref: any) =
                     </div>
                 </div>
             </div>
+            <div className='editor-lang'>transfer to En  <Switch onChange={() => changeLanguage()} /></div>
             <div className="editor-section">
                 <SectionTabs />
             </div>

@@ -37,6 +37,8 @@ export const CvPreview = forwardRef((_props, ref: any) => {
         }).filter((item: Model_Tabs.Tabs) => item.key !== 'personalInfo');
     }, [list])
 
+    const {isCN} = useSelector((state: any) => state.tabs);
+
     return (
         <div ref={ref} id="pdfViewId" className="preview-inner">
             <div className='preview-section'>
@@ -49,7 +51,7 @@ export const CvPreview = forwardRef((_props, ref: any) => {
                 </div>
                 {previewList.length && previewList.map(item => (
                     <div key={item.key}>
-                        <SectionHeader name={item.sectionName} />
+                        <SectionHeader name={isCN ? item.sectionName : item.sectionNameEn} />
                         {
                             item.key === 'skills'
                                 ? <RichTextRender content={skillsContent} />
